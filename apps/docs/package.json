@@ -1,5 +1,5 @@
 {
-  "name": "@acme/docs",
+  "name": "@engrafia/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -10,18 +10,20 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
-    "@acme/core": "workspace:*",
-    "@acme/utils": "workspace:*",
+    "@engrafia/playground": "workspace:*",
     "next": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@next/mdx": "^13.1.6",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "2.3.0"
   },
   "devDependencies": {
-    "@acme/tsconfig": "workspace:*",
+    "@engrafia/tsconfig": "workspace:*",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
-    "eslint-config-acme": "workspace:*",
+    "eslint-config-engrafia": "workspace:*",
     "typescript": "^4.5.4"
   }
 }
