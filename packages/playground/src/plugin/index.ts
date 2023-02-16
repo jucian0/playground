@@ -1,12 +1,14 @@
-import flatten from "lodash/flatten";
-import { getImportsVariables } from "./utils/imports";
-import { getExportsVariables } from "./utils/exports";
+import {
+  getExportsVariables,
+  getImportsVariables,
+} from "./utils/extractVariables";
 import { mdxJsxFromMarkdown, mdxJsxToMarkdown } from "mdast-util-mdx-jsx";
 import { toMarkdown } from "mdast-util-to-markdown";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxJsx } from "micromark-extension-mdx-jsx";
 
 import * as acorn from "acorn";
+import { flatten } from "./utils/get";
 
 const addComponentsProps = (scopes: string[]) => (node: any, idx: number) => {
   const scope = `{props, ${scopes.join(",")}}`;
@@ -59,11 +61,14 @@ export const playground = () => (tree: any, file: { contents: string }) => {
 
   const importedScopes = flatten<string>(importNodes.map(getImportsVariables));
 
-  const exportedScopes = flatten<string>(exportNodes.map(getExportsVariables));
+  const exportedScopes = flatten<string>(
+    exportNodes.flatMap(getExportsVariables)
+  );
 
   const scopes: string[] = [...importedScopes, ...exportedScopes].filter(
     Boolean
   );
+  // console.log(exportNodes, "<<<<<<<");
   playgroundComponents.forEach(addComponentsProps(scopes));
 
   return tree;

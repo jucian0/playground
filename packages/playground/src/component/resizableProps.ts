@@ -1,22 +1,26 @@
 export const getResizableProps = (
   width: string,
-  setWidth: (width: string) => void
+  setWidth: (width: string) => void,
+  height: any,
+  setHeight: any
 ) => ({
   minWidth: 260,
-  maxWidth: '100%',
+  minHeight: 100,
+  maxWidth: "100%",
   size: {
     width: width,
-    height: 'auto',
+    height: height,
   },
   style: {
-    margin: 0,
-    marginRight: 'auto',
-    height: 'auto',
+    marginTop: 10,
+    //    marginRight: "auto",
+    height: "auto",
+    border: "1px solid red",
   },
   enable: {
     top: false,
     right: true,
-    bottom: false,
+    bottom: true,
     left: false,
     topRight: false,
     bottomRight: false,
@@ -25,5 +29,6 @@ export const getResizableProps = (
   },
   onResizeStop: (_: any, __: any, ref: any) => {
     setWidth(ref.style.width);
+    setHeight(ref.style.height);
   },
 });

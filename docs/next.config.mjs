@@ -1,5 +1,6 @@
-const { playground } = require("@engrafia/playground");
-const withMDX = require("@next/mdx")({
+import { playground } from "@engrafia/playground/plugin";
+import mdx from "@next/mdx";
+const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
     // If you use remark-gfm, you'll need to use next.config.mjs
@@ -21,4 +22,4 @@ const nextConfig = {
 };
 
 // Merge MDX config with Next.js config
-module.exports = withMDX(nextConfig);
+export default withMDX(nextConfig);
