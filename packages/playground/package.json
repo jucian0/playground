@@ -25,7 +25,6 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@engrafia/tsconfig": "workspace:*",
     "eslint": "^7.32.0",
     "eslint-config-engrafia": "workspace:*",
     "tsup": "^6.6.3",

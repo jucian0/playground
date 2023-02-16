@@ -19,7 +19,6 @@ importers:
   docs:
     specifiers:
       '@engrafia/playground': workspace:*
-      '@engrafia/tsconfig': workspace:*
       '@mdx-js/loader': ^2.3.0
       '@mdx-js/react': 2.3.0
       '@next/mdx': ^13.1.6
@@ -40,7 +39,6 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@engrafia/tsconfig': link:../packages/tsconfig
       '@types/node': 17.0.45
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
@@ -61,7 +59,6 @@ importers:
 
   packages/playground:
     specifiers:
-      '@engrafia/tsconfig': workspace:*
       acorn: ^8.8.2
       autoprefixer: ^10.4.13
       eslint: ^7.32.0
@@ -96,7 +93,6 @@ importers:
       react-live: 3.1.1_biqbaboplfbrettd7655fr4n2y
       react-use-clipboard: 1.0.9_biqbaboplfbrettd7655fr4n2y
     devDependencies:
-      '@engrafia/tsconfig': link:../tsconfig
       autoprefixer: 10.4.13_postcss@8.4.21
       eslint: 7.32.0
       eslint-config-engrafia: link:../eslint-config
@@ -105,9 +101,6 @@ importers:
       tailwindcss: 3.2.6_postcss@8.4.21
       tsup: 6.6.3_krdp57wjjbbhfrtrh2uomx3tgy
       typescript: 4.9.3
-
-  packages/tsconfig:
-    specifiers: {}
 
 packages:
 
