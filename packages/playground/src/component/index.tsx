@@ -14,64 +14,72 @@ const Box = ({ css, ...props }: any) => (
 export const Playground = (props: any) => {
   const theme = useTheme();
   const [width, setWidth] = React.useState("100%");
+  const [height, setHeight] = React.useState("200px");
 
-  const resizableProps = getResizableProps(width, setWidth);
+  const resizableProps = getResizableProps(width, setWidth, height, setHeight);
 
   return (
     <Resizable
       {...resizableProps}
-      handleComponent={{
-        right: (
-          <Grid
-            css={{
-              width: "1.25rem",
-              height: "100%",
-              backgroundColor: "$gray200",
-              border: "0.313rem solid $gray200",
-              borderRadius: "0 $md $md 0",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginLeft: "-1.25rem",
-            }}
-          >
-            <Grid
-              css={{
-                width: "0.5rem",
-                height: "30%",
-                borderInlineEnd: "0.125rem solid $accents4",
-                borderInlineStart: "0.125rem solid $accents4",
-              }}
-            />
-          </Grid>
-        ),
-      }}
+      // handleComponent={{
+      //   right: (
+      //     <Grid
+      //       css={{
+      //         width: "1.25rem",
+      //         height: "100%",
+      //         backgroundColor: "$gray200",
+      //         border: "0.313rem solid $gray200",
+      //         borderRadius: "0 $md $md 0",
+      //         display: "flex",
+      //         alignItems: "center",
+      //         justifyContent: "center",
+      //         marginLeft: "-1.25rem",
+      //       }}
+      //     >
+      //       <Grid
+      //         css={{
+      //           width: "0.5rem",
+      //           height: "30%",
+      //           borderInlineEnd: "0.125rem solid $accents4",
+      //           borderInlineStart: "0.125rem solid $accents4",
+      //         }}
+      //       />
+      //     </Grid>
+      //   ),
+      // }}
     >
-      <Box
+      {/* <Box
         md={12}
         css={{
           borderRadius: "$md 0 0 $md",
           border: "0.063rem solid $gray200",
           width: "calc( 100% - 1.25rem )",
         }}
+      > */}
+      <LiveProvider
+        code={props.code}
+        scope={props.scope}
+        theme={light}
+        frameBorder={2}
       >
-        <LiveProvider
-          code={props.code}
-          scope={props.scope}
-          theme={theme.isDark ? dark : light}
-          frameBorder={2}
-        >
-          <Box
-            as={LivePreview}
-            css={{
-              minHeight: "5rem",
-              p: "$5",
-              borderBottom: "0.063rem solid $gray200",
-              alignItems: "center",
-            }}
-          />
+        <LivePreview
+          style={{
+            height: "100%",
+            width: "100%",
+            background: "green",
+            resize: "both",
+            overflow: "auto",
+          }}
+          // as={LivePreview}
+          // css={{
+          //   minHeight: "5rem",
+          //   p: "$5",
+          //   borderBottom: "0.063rem solid $gray200",
+          //   alignItems: "center",
+          // }}
+        />
 
-          <HeaderCode text={props.code} />
+        {/* <HeaderCode text={props.code} />
 
           <LiveEditor
             style={{ borderEndEndRadius: 6, borderEndStartRadius: 10 }}
@@ -87,9 +95,9 @@ export const Playground = (props: any) => {
               borderStartStartRadius: 0,
               color: "$white",
             }}
-          />
-        </LiveProvider>
-      </Box>
+          /> */}
+      </LiveProvider>
+      {/* </Box> */}
     </Resizable>
   );
 };

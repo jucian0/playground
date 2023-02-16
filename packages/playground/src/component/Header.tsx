@@ -31,7 +31,7 @@ export function HeaderCode({ text, language }: Props) {
           css={{
             height: "2.4rem",
             display: "flex",
-            color: "$text",
+
             jc: "center",
             ai: "center",
           }}

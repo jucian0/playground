@@ -1,5 +1,7 @@
 import { Playground } from "@engrafia/playground";
 
+import { Button } from "../components/button";
+
 export const meta = {
   author: "Rich Haines",
 };
@@ -14,6 +16,16 @@ This is a list in markdown:
 
 Checkout my React component:
 
+export const Test = () => <Button>MyTest Button</Button>;
+
 <Playground>
-  <button>Juciano</button>
+  <button>Native</button>
+</Playground>
+
+<Playground>
+  <Button>Custom</Button>
+</Playground>
+
+<Playground>
+  <Test />
 </Playground>
