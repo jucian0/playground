@@ -11,12 +11,7 @@ export const getResizableProps = (
     width: width,
     height: height,
   },
-  style: {
-    marginTop: 10,
-    //    marginRight: "auto",
-    height: "auto",
-    border: "1px solid red",
-  },
+
   enable: {
     top: false,
     right: true,
