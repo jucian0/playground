@@ -37,12 +37,12 @@ export const Playground = (props: any) => {
       <LiveProvider
         code={props.code}
         scope={props.scope}
-        theme={light}
+        theme={dark}
         frameBorder={2}
       >
-        <LivePreview className="p-2 overflow-auto h-auto" />
+        <LivePreview className="p-2 overflow-auto h-auto rounded-b-lg" />
         {editor && (
-          <LiveEditor className="border-gray-200 border-t font-mono rounded-b-lg" />
+          <LiveEditor className="border-gray-200 border-t rounded-b-lg font-mono text-sm" />
         )}
         <LiveError className="text-white bg-red-500 p-2 rounded-b-lg" />
       </LiveProvider>
