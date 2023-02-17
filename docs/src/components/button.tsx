@@ -8,6 +8,7 @@ export function Button({ children }: any) {
         padding: "10px 20px",
         color: "red",
         backgroundColor: "blue",
+        height: 500,
       }}
       onClick={() => setNumber(number + 1)}
     >
