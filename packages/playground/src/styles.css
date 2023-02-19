@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 
+.prism-code{
+    border-radius: 0 0 5px 5px;
+}

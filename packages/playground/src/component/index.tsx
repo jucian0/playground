@@ -65,7 +65,7 @@ export const Playground = (props: any) => {
       <LiveProvider
         code={props.code}
         scope={props.scope}
-        theme={dark}
+        theme={light}
         frameBorder={2}
       >
         <div className="flex justify-center">
@@ -77,7 +77,7 @@ export const Playground = (props: any) => {
           />
         </div>
         {editor && (
-          <LiveEditor className="border-gray-200 border-t rounded-b-lg font-mono text-sm p-2" />
+          <LiveEditor className="border-gray-200 border-t rounded-b-lg font-mono text-sm" />
         )}
         <LiveError className="text-white bg-red-500 p-2 rounded-b-lg" />
       </LiveProvider>
