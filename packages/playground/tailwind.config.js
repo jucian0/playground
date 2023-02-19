@@ -13,6 +13,12 @@ module.exports = {
         brandblue: colors.blue[500],
         brandred: colors.red[500],
       },
+      screens: {
+        tablet: "640px",
+        laptop: "1024px",
+        desktop: "1280px",
+        mobile: "475px",
+      },
     },
   },
   plugins: [

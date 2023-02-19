@@ -2,23 +2,21 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import light from "prism-react-renderer/themes/nightOwlLight";
 import dark from "prism-react-renderer/themes/dracula";
 import { Resizable } from "re-resizable";
-import React from "react";
+import React, { useState } from "react";
 import { getResizableProps } from "./resizableProps";
 import "../styles.css";
-import {
-  RxViewGrid,
-  RxCode,
-  RxCopy,
-  RxMobile,
-  RxDesktop,
-  RxTable,
-} from "react-icons/rx";
+import { RxCopy, RxDesktop } from "react-icons/rx";
+import { BsCode, BsPhone, BsRulers, BsTablet } from "react-icons/bs";
+
+import { Button } from "./button";
 
 export const Playground = (props: any) => {
   const [editor, setEditor] = React.useState(true);
   const [width, setWidth] = React.useState("100%");
-
   const resizableProps = getResizableProps(width, setWidth);
+  const screens = ["414px", "768px", "100%"];
+  const [screen, setScreen] = useState(screens[2]);
+  const [rule, setRule] = useState(true);
 
   return (
     <Resizable
@@ -26,52 +24,37 @@ export const Playground = (props: any) => {
       className={` bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow border ${props.className}`}
     >
       <div className=" bg-gray-200 rounded-t-lg flex justify-between p-2">
-        <div></div>
+        <div className="lg:w-52 sm:w-0"></div>
         <div>
-          <button
-            type="button"
-            onClick={() => setEditor(!editor)}
-            className="inline-block px-6 py-2.5 mr-2 bg-transparent text-black-600 font-medium text-xs leading-tight uppercase rounded hover:text-back-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
+          <Button
+            onClick={() => setScreen(screens[0])}
+            isActive={screens[0] === screen}
           >
-            <RxMobile size={18} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setEditor(!editor)}
-            className="inline-block px-6 py-2.5 mr-2 bg-transparent text-black-600 font-medium text-xs leading-tight uppercase rounded hover:text-back-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
+            <BsPhone size={18} />
+          </Button>
+          <Button
+            onClick={() => setScreen(screens[1])}
+            isActive={screens[1] === screen}
           >
-            <RxTable size={18} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setEditor(!editor)}
-            className="inline-block px-6 py-2.5 bg-transparent text-back-600 font-medium text-xs leading-tight uppercase rounded hover:text-back-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
+            <BsTablet size={18} />
+          </Button>
+          <Button
+            onClick={() => setScreen(screens[2])}
+            isActive={screens[2] === screen}
           >
             <RxDesktop size={18} />
-          </button>
+          </Button>
         </div>
         <div>
-          <button
-            type="button"
-            onClick={() => setEditor(!editor)}
-            className="inline-block px-6 py-2.5 mr-2 bg-transparent text-black-600 font-medium text-xs leading-tight uppercase rounded hover:text-back-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
-          >
-            <RxViewGrid size={18} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setEditor(!editor)}
-            className="inline-block px-6 py-2.5 mr-2 bg-transparent text-black-600 font-medium text-xs leading-tight uppercase rounded hover:text-back-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
-          >
-            <RxCode size={18} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setEditor(!editor)}
-            className="inline-block px-6 py-2.5 bg-transparent text-back-600 font-medium text-xs leading-tight uppercase rounded hover:text-back-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
-          >
+          <Button onClick={() => setRule(!rule)} isActive={!!rule}>
+            <BsRulers size={18} />
+          </Button>
+          <Button onClick={() => setEditor(!editor)} isActive={!!editor}>
+            <BsCode size={18} />
+          </Button>
+          <Button>
             <RxCopy size={18} />
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -81,8 +64,13 @@ export const Playground = (props: any) => {
         theme={dark}
         frameBorder={2}
       >
-        <div className="inset-0 bg-grid-slate-100 ">
-          <LivePreview className="p-2 overflow-auto h-auto rounded-b-lg" />
+        <div className="flex justify-center">
+          <LivePreview
+            className={`p-2 overflow-auto h-auto rounded-b-lg ${
+              rule && "inset-0 bg-grid-slate-100"
+            }`}
+            style={{ width: screen }}
+          />
         </div>
         {editor && (
           <LiveEditor className="border-gray-200 border-t rounded-b-lg font-mono text-sm p-2" />
