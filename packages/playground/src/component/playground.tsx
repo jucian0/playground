@@ -7,7 +7,6 @@ import { getResizableProps } from "./resizableProps";
 import "../styles.css";
 import { RxCheck, RxCopy, RxDesktop } from "react-icons/rx";
 import { BsCode, BsPhone, BsRulers, BsTablet } from "react-icons/bs";
-
 import { Button } from "./button";
 import useClipboard from "react-use-clipboard";
 
@@ -25,9 +24,9 @@ export const Playground = (props: any) => {
   return (
     <Resizable
       {...resizableProps}
-      className={` bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow border ${props.className}`}
+      className={` bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ${props.className}`}
     >
-      <div className=" bg-gray-200 rounded-t-lg flex justify-between p-2">
+      <div className=" bg-gray-200 dark:bg-gray-800 dark:border-gray-800 border-gray-200 rounded-t-lg flex justify-between p-2">
         <div className="lg:w-52 sm:w-0"></div>
         <div>
           <Button
@@ -65,19 +64,20 @@ export const Playground = (props: any) => {
       <LiveProvider
         code={props.code}
         scope={props.scope}
-        theme={light}
+        theme={dark}
         frameBorder={2}
       >
         <div className="flex justify-center">
           <LivePreview
             className={`p-2 overflow-auto h-auto rounded-b-lg ${
-              rule && "inset-0 bg-grid-slate-100"
+              rule &&
+              "inset-0 bg-grid-slate-700/25 mask-image:rgba(255,255,255,0.9) dark:bg-grid-slate-700/25 dark:mask-image:rgba(255,255,255,0.9)"
             }`}
             style={{ width: screen }}
           />
         </div>
         {editor && (
-          <LiveEditor className="border-gray-200 border-t rounded-b-lg font-mono text-sm" />
+          <LiveEditor className=" dark:border-gray-700 border-t rounded-b-lg font-mono text-sm" />
         )}
         <LiveError className="text-white bg-red-500 p-2 rounded-b-lg" />
       </LiveProvider>

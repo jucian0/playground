@@ -16,7 +16,14 @@
     "react-dom": "^18.2.0",
     "@next/mdx": "^13.1.6",
     "@mdx-js/loader": "^2.3.0",
-    "@mdx-js/react": "2.3.0"
+    "nextra": "^2.2.14",
+    "nextra-theme-docs": "^2.2.14",
+    "@mdx-js/react": "2.3.0",
+    "tailwindcss": "^3.2.4",
+    "postcss": "^8.4.20",
+    "@react-aria/ssr": "^3.4.1",
+    "autoprefixer": "^10.4.13",
+    "classnames": "^2.3.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
