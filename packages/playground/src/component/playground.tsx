@@ -69,7 +69,7 @@ export const Playground = (props: any) => {
       >
         <div className="flex justify-center">
           <LivePreview
-            className={`p-2 overflow-auto h-auto rounded-b-lg ${
+            className={`p-2 overflow-auto h-auto rounded-b-lg dark:border-gray-700 border ${
               rule &&
               "inset-0 bg-grid-slate-700/25 mask-image:rgba(255,255,255,0.9) dark:bg-grid-slate-700/25 dark:mask-image:rgba(255,255,255,0.9)"
             }`}

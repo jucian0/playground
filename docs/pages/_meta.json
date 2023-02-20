@@ -1,5 +1,12 @@
 {
-    "index": "Home",
+    "index": {
+        "title": "Home",
+        "type": "page",
+        "display": "hidden",
+        "theme": {
+            "layout": "raw"
+        }
+    },
     "contact": {
         "display": "hidden"
     },
