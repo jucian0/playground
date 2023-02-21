@@ -17,5 +17,6 @@
     "turbo": "latest"
   },
   "packageManager": "pnpm@7.15.0",
-  "dependencies": {}
+  "dependencies": {},
+  "version": "0.0.0"
 }
