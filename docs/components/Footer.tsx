@@ -27,16 +27,8 @@ export function Footer({ menu }: { menu?: boolean }): ReactElement {
               </Link>
             </li>
             <li>
-              <Link href="/about" className="mr-4 hover:underline md:mr-6 ">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/quick-start"
-                className="mr-4 hover:underline md:mr-6"
-              >
-                Docs
+              <Link href="/how-to-use" className="mr-4 hover:underline md:mr-6">
+                How to use
               </Link>
             </li>
             <li>

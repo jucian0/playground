@@ -1,5 +1,5 @@
 import "../globals.css";
-import "@engrafia/playground/styles.css";
+import "rehype-playground/styles.css";
 import { SSRProvider } from "@react-aria/ssr";
 import type { AppProps } from "next/app";
 import type { ReactNode } from "react";

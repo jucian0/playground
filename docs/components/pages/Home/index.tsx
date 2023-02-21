@@ -1,5 +1,4 @@
 import Highlights from "./Highlights";
-import Features from "./Feature";
 import HeroContent from "./HeroContent";
 
 export default function HomeContent() {
@@ -7,7 +6,6 @@ export default function HomeContent() {
     <>
       <HeroContent />
       <Highlights />
-      {/* <Features /> */}
     </>
   );
 }

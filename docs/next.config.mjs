@@ -1,4 +1,4 @@
-import { playground } from "@engrafia/playground/plugin";
+import { playground } from "rehype-playground/plugin";
 import nextra from "nextra";
 
 const withNextra = nextra({

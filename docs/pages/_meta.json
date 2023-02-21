@@ -7,8 +7,5 @@
             "layout": "raw"
         }
     },
-    "contact": {
-        "display": "hidden"
-    },
-    "about": "About Us"
+    "quick-start": "Quick start"
 }

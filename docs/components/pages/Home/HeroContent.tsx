@@ -19,10 +19,10 @@ export default function HeroContent() {
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Link
-                  href="#try-it"
+                  href="/quick-start"
                   className="py-3.5 px-8 mr-2 mb-2 text-md text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 >
-                  Try it
+                  Quick start
                 </Link>
                 <a
                   href="https://github.com/jucian0/playground"

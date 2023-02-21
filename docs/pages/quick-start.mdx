@@ -1,0 +1,141 @@
+---
+title: "Quick start"
+description: "Playground is designed to work with MDX files, it's is a playground for ReactJs components."
+tags: "reactjs, playground, documentation"
+---
+
+import { Playground } from "rehype-playground";
+
+import { Card } from "../components/Card";
+
+import Callout from "./../components/Callout";
+
+Designed to works with MDX files, `Playground` is a rehype plugin that can be used in many React frameworks, like Next, Remix, Astro, and Gatsby. With just one step configuration you can use `Playground` to provide super powers for your components examples, and docs.
+
+`Playground` enables you to create interactive and engaging examples of your components that can be easily customized and shared with others. The plugin supports live code editing and rendering, allowing you to quickly and easily experiment with different configurations and settings for your components.
+
+## Quick Setup
+
+To get started with `Playground`, you can install it using your preferred package manager:
+
+```bash
+npm install rehype-playground --save-dev
+```
+
+To use `Playground` with a specific React framework, you'll need to configure rehype within that framework. Here's how to set it up with some popular frameworks:
+
+<Callout type="info">
+  Playground is a JavaScript module that is written in ECMAScript (ES) modules
+  format (ESM), and it requires a module-aware environment to run properly. This
+  means that if you are using Playground with a framework that supports ES
+  modules, you should use the .mjs extension for your configuration file, and
+  the module should be imported using the ESM syntax.
+</Callout>
+
+### Next.js
+
+To use `Playground` with Next.js, you'll need to add a `next.config.mjs` file to the root of your project with the following content:
+
+```js
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    rehypePlugins: [require("@playground/rehype")],
+  },
+});
+
+module.exports = withMDX();
+```
+
+This will configure Next.js to use Playground with MDX files in your project.
+
+### Remix
+
+To use `Playground` with Remix, you'll need to add a `mix.config.js` file to the root of your project with the following content:
+
+```js
+const mixMDX = require("@remix-run/mdx");
+const rehypePlugins = [require("@playground/rehype")];
+
+module.exports = mixMDX.default({
+  rehypePlugins,
+});
+```
+
+This will configure Remix to use `Playground` with MDX files in your project.
+
+### Astro
+
+To use Playground with Astro, you'll need to add a `astro.config.mjs` file to the root of your project with the following content:
+
+```js
+import { createPlugin } from "astro";
+import rehype from "rehype";
+import rehypePrism from "@mapbox/rehype-prism";
+import playground from "@playground/rehype";
+
+export default {
+  plugins: [
+    createPlugin({
+      name: "rehype",
+      plugins: [playground, [rehypePrism, { ignoreMissing: true }], rehype()],
+    }),
+  ],
+};
+```
+
+This will configure Astro to use `Playground` with MDX files in your project.
+
+### Gatsby
+
+To use `Playground` with Gatsby, you'll need to add a `gatsby-config.js` file to the root of your project with the following content:
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-vscode",
+            options: {
+              theme: "Dark+ (default dark)",
+              extensions: ["theme-darcula"],
+              inlineCode: {
+                marker: ">",
+              },
+            },
+          },
+        ],
+        remarkPlugins: [require("remark-slug")],
+        rehypePlugins: [require("@playground/rehype")],
+      },
+    },
+  ],
+};
+```
+
+This will configure Gatsby to use `Playground` with MDX files in your project.
+
+## Usage
+
+Once you have set up `Playground`, you can begin using it to create examples and documentation for your components. You can customize the appearance and behavior of your examples using a wide range of settings and options, including CSS, JavaScript, and HTML.
+
+For example, you can use the `Playground` component to create an interactive example of a button component:
+
+```mdx
+import Playground from 'rehype-playground';
+
+import Button '...'
+
+# Button
+
+The `Button` component is a simple button that can be used in your application.
+
+<Playground>
+  <Button>Click me</Button>
+</Playground>
+```
+
+This will render an interactive example of the Button component that users can play with and customize. You can also use Playground to create more complex examples and documentation, depending on your needs.

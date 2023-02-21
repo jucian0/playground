@@ -1,0 +1,75 @@
+---
+title: "How to use it"
+description: "Playground is designed to work with MDX files, it's is a playground for ReactJs components."
+tags: "reactjs, playground, documentation"
+---
+
+import { Playground } from "rehype-playground";
+
+import { Card } from "../components/Card";
+
+# Playground
+
+`Playground` is a rehype plugin and React component that allows you to create rich and interactive code examples for your documentation or web application. In addition to providing basic code rendering and highlighting, `Playground` also includes several features that make it easier for users to understand and interact with the example code.
+
+## Installation
+
+To use `Playground`, you first need to install it as a dependency in your project:
+
+```bash
+npm install rehype-playground --save-dev
+```
+
+## As a React component
+
+To use `Playground` as a React component, you need to import it into your project and use it in your code. Here's an example of how to use `Playground` in your React code:
+
+![playground](/images/play-dark.png)
+
+The Playground component takes a single child, which is the code you want to display in the example. You can include any valid JSX code as the child.
+
+## Features
+
+The Playground component provides several features that make it easier for users to understand and interact with the example code. Here are some of the key features:
+
+## Rule
+
+The Playground component includes a rule that separates the example code from the rendered output.
+
+## Show code
+
+The Playground component includes a button that allows the user to toggle the visibility of the example code.
+
+## Copy code
+
+The Playground component includes a button that allows the user to copy the example code to their clipboard.
+
+## Mobile, table, and desktop options
+
+The Playground component provides options for displaying the example code and output in different formats depending on the device size.
+
+## Error handling
+
+The Playground component provides error handling for the example code, and displays any errors that occur during code execution.
+
+By using the Playground component and its features, you can create engaging and interactive code examples for your documentation or web application.
+
+## Example
+
+```mdx
+import Playground from 'rehype-playground';
+
+import Card '...'
+
+# Card
+
+The `Card` component is a simple styled div that can be used in your application.
+
+<Playground>
+  <Card />
+</Playground>
+```
+
+<Playground>
+  <Card />
+</Playground>
