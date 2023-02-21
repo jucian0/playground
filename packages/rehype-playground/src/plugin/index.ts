@@ -68,7 +68,6 @@ export const playground = () => (tree: any, file: { contents: string }) => {
   const scopes: string[] = [...importedScopes, ...exportedScopes].filter(
     Boolean
   );
-  // console.log(exportNodes, "<<<<<<<");
   playgroundComponents.forEach(addComponentsProps(scopes));
 
   return tree;

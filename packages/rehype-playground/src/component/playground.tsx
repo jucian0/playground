@@ -1,6 +1,5 @@
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import light from "prism-react-renderer/themes/nightOwlLight";
-import dark from "prism-react-renderer/themes/dracula";
+import dark from "prism-react-renderer/themes/dracula/index.js";
 import { Resizable } from "re-resizable";
 import React, { useState } from "react";
 import { getResizableProps } from "./resizableProps";

@@ -5,7 +5,6 @@ import cn from "classnames";
 import HeaderLogo from "./HeaderLogo";
 
 export function Footer({ menu }: { menu?: boolean }): ReactElement {
-  console.log(menu);
   return (
     <footer className="bg-[#FAFAFA] pb-[env(safe-area-inset-bottom)]  relative dark:bg-[#111111]">
       <div className="absolute top-0 h-12 w-full -translate-y-full bg-gradient-to-t from-[#FAFAFA] to-transparent dark:from-black pointer-events-none" />
