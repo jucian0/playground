@@ -4,6 +4,16 @@
 
 `Playground` is a rehype plugin and React component that allows you to create rich and interactive code examples for your documentation or web application.
 
+## Motivation
+
+- `Playground` was created to make it easier for developers to create and share interactive code examples in their documentation or web application. Traditional code snippets can be difficult to read and understand, especially for beginners, and often lack the context needed to fully comprehend the code.
+
+- `Playground` solves this problem by providing an interactive environment for code examples that allows users to edit, run, and explore the code in real-time. Users can experiment with different inputs and outputs, see the results of their changes, and even copy the code to use in their own projects.
+
+- `Playground` also provides error handling and device-specific formatting options, making it a versatile and reliable tool for developers of all skill levels.
+
+By using `Playground`, developers can create more engaging and interactive documentation and web applications, which can improve the learning experience for their users and ultimately lead to better adoption and retention of their products and services.
+
 ## Features
 
 The `Playground` component provides the following features:
