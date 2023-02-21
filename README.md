@@ -1,6 +1,6 @@
 # Playground
 
-![playground](/img/media.svg)
+![playground-logo](/img/media.svg)
 
 `Playground` is a rehype plugin and React component that allows you to create rich and interactive code examples for your documentation or web application.
 
@@ -125,6 +125,8 @@ The `Button` component is a simple button that can be used in your application.
   <Button>Click me</Button>
 </Playground>
 ```
+
+![playground](/img/back.png)
 
 ## Compatibility
 

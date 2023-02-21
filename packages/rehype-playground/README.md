@@ -126,6 +126,8 @@ The `Button` component is a simple button that can be used in your application.
 </Playground>
 ```
 
+![playground](../../img/back.png)
+
 ## Compatibility
 
 `Playground` is designed to work with MDX files and can be used in many React frameworks, including Next, Remix, Astro, and Gatsby. However, please note that `Playground` only works with ESM modules, and you may need to use the .mjs file extension in some configurations.
