@@ -126,7 +126,7 @@ The `Button` component is a simple button that can be used in your application.
 </Playground>
 ```
 
-![playground](../../img/back.png)
+![playground](../../img/dark.png)
 
 ## Compatibility
 
