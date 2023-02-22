@@ -2,12 +2,17 @@
   "name": "rehype-playground",
   "version": "0.0.2",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": [
     "**/*.css"
   ],
   "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./module": {
+      "import": "./dist/index.mjs"
+    },
     "./plugin": {
       "require": "./dist/plugin/index.js",
       "import": "./dist/plugin/index.mjs"
