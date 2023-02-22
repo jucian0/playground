@@ -6,7 +6,7 @@ import { Discord, Github } from "./components/Social";
 import { Footer } from "./components/Footer";
 import HeaderLogo from "./components/HeaderLogo";
 
-const SITE_ROOT = "https://useform.org";
+const SITE_ROOT = "https://reactjs-playground.vercel.app";
 
 /**
  * @type {import('nextra-theme-docs').DocsThemeConfig}
