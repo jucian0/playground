@@ -42,7 +42,7 @@ To use `Playground` with Next.js, you'll need to add a `next.config.mjs` file to
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
-    rehypePlugins: [require("@playground/rehype")],
+    rehypePlugins: [require("rehype-playground/plugin")],
   },
 });
 
@@ -57,7 +57,7 @@ To use `Playground` with Remix, you'll need to add a `mix.config.js` file to the
 
 ```js
 const mixMDX = require("@remix-run/mdx");
-const rehypePlugins = [require("@playground/rehype")];
+const rehypePlugins = [require("rehype-playground/plugin")];
 
 module.exports = mixMDX.default({
   rehypePlugins,
@@ -74,7 +74,7 @@ To use Playground with Astro, you'll need to add a `astro.config.mjs` file to th
 import { createPlugin } from "astro";
 import rehype from "rehype";
 import rehypePrism from "@mapbox/rehype-prism";
-import playground from "@playground/rehype";
+import playground from "rehype-playground/plugin";
 
 export default {
   plugins: [
@@ -111,7 +111,7 @@ module.exports = {
           },
         ],
         remarkPlugins: [require("remark-slug")],
-        rehypePlugins: [require("@playground/rehype")],
+        rehypePlugins: [require("rehype-playground/plugin")],
       },
     },
   ],
