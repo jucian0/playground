@@ -34,6 +34,10 @@ npm install rehype-playground
 
 ## Usage
 
+Import css style
+
+`import "rehype-playground/styles.css";`
+
 ### Next.js
 
 To use `Playground` with Next.js, you'll need to add a `next.config.mjs` file to the root of your project with the following content:
