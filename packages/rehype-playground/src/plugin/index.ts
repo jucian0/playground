@@ -14,20 +14,17 @@ const addComponentsProps = (scopes: string[]) => (node: any, idx: number) => {
 
   const out = toMarkdown(node, { extensions: [mdxToMarkdown()] });
 
-  const tree = fromMarkdown(
-    out.replace("<Playground", `<Playground scope={${scope}} code={${out}}`),
+  const tree: any = fromMarkdown(
+    out.replace("<Playground", `<Playground scope={${scope}}`),
     {
       extensions: [mdxjs()],
       mdastExtensions: [mdxFromMarkdown()],
     }
   );
 
-  // node = tree.children[0];
-
-  // console.log(tree.children[0], "<<<<<<<<<<<<tree");
-  // console.log(node, "<<<<<<<<<<<<node");
-
-  node.attributes = node.attributes.concat([
+  node.attributes = [
+    ...tree.children[0].attributes,
+    ...node.attributes,
     {
       type: "mdxJsxAttribute",
       name: "code",
@@ -36,14 +33,7 @@ const addComponentsProps = (scopes: string[]) => (node: any, idx: number) => {
         .replace(`<Playground>`, "")
         .replace(`</Playground>`, ""),
     },
-    {
-      type: "mdxJsxAttribute",
-      name: "scope",
-      value: scope,
-    },
-  ]);
-
-  console.log(typeof scope);
+  ];
 };
 
 export interface PluginOpts {
