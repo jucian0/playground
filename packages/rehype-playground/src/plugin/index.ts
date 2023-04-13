@@ -2,42 +2,48 @@ import {
   getExportsVariables,
   getImportsVariables,
 } from "./utils/extractVariables";
-import { mdxJsxFromMarkdown, mdxJsxToMarkdown } from "mdast-util-mdx-jsx";
-import { toMarkdown } from "mdast-util-to-markdown";
-import { fromMarkdown } from "mdast-util-from-markdown";
-import { mdxJsx } from "micromark-extension-mdx-jsx";
 
-import * as acorn from "acorn";
 import { flatten } from "./utils/get";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import { toMarkdown } from "mdast-util-to-markdown";
+import { mdxjs } from "micromark-extension-mdxjs";
+import { mdxFromMarkdown, mdxToMarkdown } from "mdast-util-mdx";
 
 const addComponentsProps = (scopes: string[]) => (node: any, idx: number) => {
   const scope = `{props, ${scopes.join(",")}}`;
 
-  const code = toMarkdown(node.children[0], {
-    extensions: [mdxJsxToMarkdown()],
-  });
+  const out = toMarkdown(node, { extensions: [mdxToMarkdown()] });
 
-  const out = toMarkdown(node, {
-    extensions: [mdxJsxToMarkdown()],
-  });
-
-  const tree: any = fromMarkdown(
-    out.replace("<Playground", `<Playground scope={${scope}}`),
+  const tree = fromMarkdown(
+    out.replace("<Playground", `<Playground scope={${scope}} code={${out}}`),
     {
-      extensions: [mdxJsx({ acorn: acorn as any, addResult: true })],
-      mdastExtensions: [mdxJsxFromMarkdown()],
+      extensions: [mdxjs()],
+      mdastExtensions: [mdxFromMarkdown()],
     }
   );
 
-  node.attributes = [
-    ...tree.children[0].attributes,
-    ...node.attributes,
+  // node = tree.children[0];
+
+  // console.log(tree.children[0], "<<<<<<<<<<<<tree");
+  // console.log(node, "<<<<<<<<<<<<node");
+
+  node.attributes = node.attributes.concat([
     {
       type: "mdxJsxAttribute",
       name: "code",
-      value: code.trim(),
+      value: out
+        .trim()
+        .replace(`<Playground>`, "")
+        .replace(`</Playground>`, ""),
     },
-  ];
+    {
+      type: "mdxJsxAttribute",
+      name: "scope",
+      value: scope,
+    },
+  ]);
+
+  console.log(typeof scope);
 };
 
 export interface PluginOpts {

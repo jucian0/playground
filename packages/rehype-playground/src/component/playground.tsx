@@ -28,6 +28,8 @@ export const Playground = (props: any) => {
   const [rule, setRule] = useState(true);
   const handle = useFullScreenHandle();
 
+  console.log(props);
+
   return (
     <Resizable
       {...resizableProps}
@@ -79,7 +81,7 @@ export const Playground = (props: any) => {
 
       <LiveProvider
         code={props.code}
-        scope={props.scope}
+        // scope={props.scope}
         theme={dark}
         frameBorder={2}
       >
