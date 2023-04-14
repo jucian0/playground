@@ -3,7 +3,7 @@ import "rehype-playground/styles.css";
 import { SSRProvider } from "@react-aria/ssr";
 import type { AppProps } from "next/app";
 import type { ReactNode } from "react";
-import React from "react";
+import { MDXProvider } from "@mdx-js/react";
 
 type NextraAppProps = AppProps & {
   Component: AppProps["Component"] & {
@@ -39,7 +39,9 @@ export default function Nextra({ Component, pageProps }: NextraAppProps) {
           </defs>
         </svg>
       </>
-      <Component {...pageProps} />
+      <MDXProvider>
+        <Component {...pageProps} />
+      </MDXProvider>
     </SSRProvider>
   );
 }

@@ -15,8 +15,18 @@ import {
 import { Button } from "./button";
 import useClipboard from "react-use-clipboard";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { formater } from "./formater";
+import { Language } from "prism-react-renderer";
 
-export const Playground = (props: any) => {
+type Props = {
+  scope: Record<string, React.ReactNode>;
+  code: string;
+  language?: Language;
+  className?: string;
+  style?: Record<string, any>;
+};
+
+export const Playground = (props: Props) => {
   const [isCopied, setCopied] = useClipboard(props.code, {
     successDuration: 1000,
   });
@@ -28,12 +38,10 @@ export const Playground = (props: any) => {
   const [rule, setRule] = useState(true);
   const handle = useFullScreenHandle();
 
-  console.log(props, "<<<<<playground");
-
   return (
     <Resizable
       {...resizableProps}
-      className={` bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ${props.className}`}
+      className={` bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 ${props.className}`}
       handleComponent={{
         right: (
           <div className="w-4 h-full rounded-r-lg bg-gray-200  dark:bg-gray-700 flex justify-center items-center -ml-2">
@@ -42,7 +50,10 @@ export const Playground = (props: any) => {
         ),
       }}
     >
-      <div className=" bg-gray-200 dark:bg-gray-800 dark:border-gray-800 border-gray-200 rounded-t-lg flex justify-between p-2 pr-6">
+      <div
+        style={props.style}
+        className=" bg-gray-200 dark:bg-gray-800 dark:border-gray-800 border-gray-200 rounded-t-lg flex justify-between p-2 pr-6"
+      >
         <div>
           <Button
             onClick={() => setScreen(screens[0])}
@@ -80,8 +91,9 @@ export const Playground = (props: any) => {
       </div>
 
       <LiveProvider
-        code={props.code}
-        scope={props.scope}
+        code={formater(props.code)}
+        scope={{ ...props.scope }}
+        language={props.language}
         theme={dark}
         frameBorder={2}
       >

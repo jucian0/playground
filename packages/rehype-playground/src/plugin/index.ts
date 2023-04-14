@@ -9,6 +9,24 @@ import { toMarkdown } from "mdast-util-to-markdown";
 import { mdxjs } from "micromark-extension-mdxjs";
 import { mdxFromMarkdown, mdxToMarkdown } from "mdast-util-mdx";
 
+function stringifyReactCode(code: string) {
+  const trimmedCode = code.trim();
+  const startIndex = trimmedCode.startsWith("<Playground>")
+    ? "<Playground>".length
+    : 0;
+  const endIndex = trimmedCode.endsWith("</Playground>")
+    ? trimmedCode.length - "</Playground>".length
+    : trimmedCode.length;
+  const formattedCode = trimmedCode
+    .slice(startIndex, endIndex)
+    .replace(/^\s*\{/gm, "")
+    .replace(/^\s*}/gm, "")
+    .replace(/\/\s+/g, "/")
+    .replace(/\s+</g, "<");
+
+  return formattedCode;
+}
+
 const addComponentsProps = (scopes: string[]) => (node: any, idx: number) => {
   const scope = `{props, ${scopes.join(",")}}`;
 
@@ -22,16 +40,15 @@ const addComponentsProps = (scopes: string[]) => (node: any, idx: number) => {
     }
   );
 
+  console.log(stringifyReactCode(out));
+
   node.attributes = [
     ...tree.children[0].attributes,
     ...node.attributes,
     {
       type: "mdxJsxAttribute",
       name: "code",
-      value: out
-        .trim()
-        .replace(`<Playground>`, "")
-        .replace(`</Playground>`, ""),
+      value: `${stringifyReactCode(out)}`,
     },
   ];
 };
