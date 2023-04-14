@@ -3,7 +3,10 @@ import "rehype-playground/styles.css";
 import { SSRProvider } from "@react-aria/ssr";
 import type { AppProps } from "next/app";
 import type { ReactNode } from "react";
-import { MDXProvider } from "@mdx-js/react";
+import { useMDXComponents } from "@mdx-js/react";
+
+import { vsDark, vsLight, PlaygroundProvider } from "rehype-playground";
+import { useConfig, useTheme } from "nextra-theme-docs";
 
 type NextraAppProps = AppProps & {
   Component: AppProps["Component"] & {
@@ -17,7 +20,11 @@ if (typeof window !== "undefined" && !("requestIdleCallback" in window)) {
   (window as any).cancelIdleCallback = (e) => clearTimeout(e);
 }
 
-export default function Nextra({ Component, pageProps }: NextraAppProps) {
+export default function Nextra({
+  Component,
+  pageProps,
+  ...rest
+}: NextraAppProps) {
   return (
     <SSRProvider>
       <>
@@ -39,9 +46,25 @@ export default function Nextra({ Component, pageProps }: NextraAppProps) {
           </defs>
         </svg>
       </>
-      <MDXProvider>
+      <Wrapper>
         <Component {...pageProps} />
-      </MDXProvider>
+      </Wrapper>
     </SSRProvider>
+  );
+}
+
+function Wrapper(props: React.PropsWithChildren) {
+  const components = useMDXComponents();
+  const { theme } = useTheme();
+
+  console.log(theme);
+
+  return (
+    <PlaygroundProvider
+      components={components}
+      theme={theme === "dark" ? vsDark : vsLight}
+    >
+      {props.children}
+    </PlaygroundProvider>
   );
 }

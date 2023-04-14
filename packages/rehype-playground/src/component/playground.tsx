@@ -17,6 +17,7 @@ import useClipboard from "react-use-clipboard";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { formater } from "./formater";
 import { Language } from "prism-react-renderer";
+import { usePlaygroundContext } from "./context";
 
 type Props = {
   scope: Record<string, React.ReactNode>;
@@ -37,6 +38,7 @@ export const Playground = (props: Props) => {
   const [screen, setScreen] = useState(screens[2]);
   const [rule, setRule] = useState(true);
   const handle = useFullScreenHandle();
+  const { theme, components } = usePlaygroundContext();
 
   return (
     <Resizable
@@ -92,9 +94,9 @@ export const Playground = (props: Props) => {
 
       <LiveProvider
         code={formater(props.code)}
-        scope={{ ...props.scope }}
+        scope={{ ...props.scope, ...components }}
         language={props.language}
-        theme={dark}
+        theme={theme ?? dark}
         frameBorder={2}
       >
         <div
