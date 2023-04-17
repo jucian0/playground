@@ -4,13 +4,13 @@ description: "Playground is designed to work with MDX files, it's is a playgroun
 tags: "reactjs, playground, documentation"
 ---
 
-import { Playground } from "rehype-playground";
+import { Playground } from "remark-playground";
 
 import { Card } from "../components/Card";
 
 import Callout from "./../components/Callout";
 
-Designed to works with MDX files, `Playground` is a rehype plugin that can be used in many React frameworks, like Next, Remix, Astro, and Gatsby. With just one step configuration you can use `Playground` to provide super powers for your components examples, and docs.
+Designed to works with MDX files, `Playground` is a remark plugin that can be used in many React frameworks, like Next, Remix, Astro, and Gatsby. With just one step configuration you can use `Playground` to provide super powers for your components examples, and docs.
 
 `Playground` enables you to create interactive and engaging examples of your components that can be easily customized and shared with others. The plugin supports live code editing and rendering, allowing you to quickly and easily experiment with different configurations and settings for your components.
 
@@ -19,10 +19,10 @@ Designed to works with MDX files, `Playground` is a rehype plugin that can be us
 To get started with `Playground`, you can install it using your preferred package manager:
 
 ```bash
-npm install rehype-playground --save
+npm install remark-playground --save
 ```
 
-To use `Playground` with a specific React framework, you'll need to configure rehype within that framework. Here's how to set it up with some popular frameworks:
+To use `Playground` with a specific React framework, you'll need to configure remark within that framework. Here's how to set it up with some popular frameworks:
 
 <Callout type="info">
   Playground is a JavaScript module that is written in ECMAScript (ES) modules
@@ -40,7 +40,7 @@ To use `Playground` with Next.js, you'll need to add a `next.config.mjs` file to
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
-    rehypePlugins: [require("rehype-playground/plugin")],
+    remarkPlugins: [require("remark-playground/plugin")],
   },
 });
 
@@ -55,10 +55,10 @@ To use `Playground` with Remix, you'll need to add a `mix.config.js` file to the
 
 ```js
 const mixMDX = require("@remix-run/mdx");
-const rehypePlugins = [require("rehype-playground/plugin")];
+const remarkPlugins = [require("remark-playground/plugin")];
 
 module.exports = mixMDX.default({
-  rehypePlugins,
+  remarkPlugins,
 });
 ```
 
@@ -70,15 +70,15 @@ To use Playground with Astro, you'll need to add a `astro.config.mjs` file to th
 
 ```js
 import { createPlugin } from "astro";
-import rehype from "rehype";
-import rehypePrism from "@mapbox/rehype-prism";
-import playground from "rehype-playground/plugin";
+import remark from "remark";
+import remarkPrism from "@mapbox/remark-prism";
+import playground from "remark-playground/plugin";
 
 export default {
   plugins: [
     createPlugin({
-      name: "rehype",
-      plugins: [playground, [rehypePrism, { ignoreMissing: true }], rehype()],
+      name: "remark",
+      plugins: [playground, [remarkPrism, { ignoreMissing: true }], remark()],
     }),
   ],
 };
@@ -109,7 +109,7 @@ module.exports = {
           },
         ],
         remarkPlugins: [require("remark-slug")],
-        rehypePlugins: [require("rehype-playground/plugin")],
+        remarkPlugins: [require("remark-playground/plugin")],
       },
     },
   ],
@@ -125,7 +125,7 @@ Once you have set up `Playground`, you can begin using it to create examples and
 For example, you can use the `Playground` component to create an interactive example of a button component:
 
 ```mdx
-import Playground from 'rehype-playground';
+import Playground from 'remark-playground';
 
 import Button '...'
 

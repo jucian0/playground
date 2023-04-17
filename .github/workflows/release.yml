@@ -33,7 +33,7 @@ jobs:
 
       - name: Build
         shell: bash
-        run: pnpm --filter=rehype-playground  build
+        run: pnpm --filter=remark-playground  build
 
       ##  We are going to replace it by a specif command to configure git environments
       - name: Temporally git user

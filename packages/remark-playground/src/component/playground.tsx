@@ -86,9 +86,6 @@ export const Playground = (props: Props) => {
           <Button onClick={() => setEditor(!editor)} isActive={!!editor}>
             <BsCode size={18} />
           </Button>
-          <Button onClick={setCopied}>
-            {isCopied ? <RxCheck size={18} /> : <RxCopy size={18} />}
-          </Button>
         </div>
       </div>
 
@@ -102,7 +99,7 @@ export const Playground = (props: Props) => {
         <div
           className={`flex justify-center ${
             rule &&
-            "inset-0 bg-grid-slate-700/25 mask-image:rgba(255,255,255,0.9) dark:bg-grid-slate-700/25 dark:mask-image:rgba(255,255,255,0.9)"
+            "inset-0 bg-grid-slate-700/10 mask-image:rgba(255,255,255,0.9) dark:bg-grid-slate-700/20 dark:mask-image:rgba(255,255,255,0.9)"
           }`}
         >
           <FullScreen handle={handle}>
@@ -113,7 +110,12 @@ export const Playground = (props: Props) => {
           </FullScreen>
         </div>
         {editor && (
-          <LiveEditor className=" dark:border-gray-700 border-t rounded-b-lg font-mono text-sm" />
+          <div className="relative">
+            <Button onClick={setCopied} className="absolute top-0 right-2 z-10">
+              {isCopied ? <RxCheck size={18} /> : <RxCopy size={18} />}
+            </Button>
+            <LiveEditor className=" dark:border-gray-700 border-t rounded-b-lg font-mono text-sm" />
+          </div>
         )}
         <LiveError className="text-white bg-red-500 p-2 rounded-b-lg" />
       </LiveProvider>

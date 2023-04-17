@@ -2,7 +2,7 @@
 
 ![playground](../../img/media.svg)
 
-`Playground` is a rehype plugin and React component that allows you to create rich and interactive code examples for your documentation or web application.
+`Playground` is a remark plugin and React component that allows you to create rich and interactive code examples for your documentation or web application.
 
 ## Motivation
 
@@ -29,7 +29,7 @@ The `Playground` component provides the following features:
 To use `Playground`, you first need to install it as a dependency in your project:
 
 ```bash
-npm install rehype-playground
+npm install remark-playground
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ To use `Playground` with Next.js, you'll need to add a `next.config.mjs` file to
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
-    rehypePlugins: [require("rehype-playground/plugin")],
+    remarkPlugins: [require("remark-playground/plugin")],
   },
 });
 
@@ -57,10 +57,10 @@ To use `Playground` with Remix, you'll need to add a `mix.config.js` file to the
 
 ```js
 const mixMDX = require("@remix-run/mdx");
-const rehypePlugins = [require("rehype-playground/plugin")];
+const remarkPlugins = [require("remark-playground/plugin")];
 
 module.exports = mixMDX.default({
-  rehypePlugins,
+  remarkPlugins,
 });
 ```
 
@@ -72,15 +72,15 @@ To use Playground with Astro, you'll need to add a `astro.config.mjs` file to th
 
 ```js
 import { createPlugin } from "astro";
-import rehype from "rehype";
-import rehypePrism from "@mapbox/rehype-prism";
-import playground from "rehype-playground/plugin";
+import remark from "remark";
+import remarkPrism from "@mapbox/remark-prism";
+import playground from "remark-playground/plugin";
 
 export default {
   plugins: [
     createPlugin({
-      name: "rehype",
-      plugins: [playground, [rehypePrism, { ignoreMissing: true }], rehype()],
+      name: "remark",
+      plugins: [playground, [remarkPrism, { ignoreMissing: true }], remark()],
     }),
   ],
 };
@@ -110,8 +110,10 @@ module.exports = {
             },
           },
         ],
-        remarkPlugins: [require("remark-slug")],
-        rehypePlugins: [require("rehype-playground/plugin")],
+        remarkPlugins: [
+          require("remark-slug"),
+          require("remark-playground/plugin"),
+        ],
       },
     },
   ],
@@ -123,7 +125,7 @@ This will configure Gatsby to use `Playground` with MDX files in your project.
 ### Using in MDX files
 
 ```mdx
-import Playground from 'rehype-playground';
+import Playground from 'remark-playground';
 
 import Button '...'
 

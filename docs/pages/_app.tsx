@@ -1,11 +1,11 @@
 import "../globals.css";
-import "rehype-playground/styles.css";
+import "remark-playground/styles.css";
 import { SSRProvider } from "@react-aria/ssr";
 import type { AppProps } from "next/app";
 import type { ReactNode } from "react";
 import { useMDXComponents } from "@mdx-js/react";
 
-import { vsDark, vsLight, PlaygroundProvider } from "rehype-playground";
+import { vsDark, vsLight, PlaygroundProvider } from "remark-playground";
 import { useConfig, useTheme } from "nextra-theme-docs";
 
 type NextraAppProps = AppProps & {
