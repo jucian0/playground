@@ -1,4 +1,13 @@
-# 0.1.0 (2023-04-14)
+## [0.1.1](https://github.com/jucian0/playground/compare/v0.1.0...v0.1.1) (2023-04-17)
+
+
+### Bug Fixes
+
+* rename, and change from rehype to remark plugin ([34da0eb](https://github.com/jucian0/playground/commit/34da0ebbe5e99ffd8e1fd85baa53897b6fc735a7))
+
+
+
+# [0.1.0](https://github.com/jucian0/playground/compare/e6ac2e095d729d34400d53b7800d3a364fb6090a...v0.1.0) (2023-04-14)
 
 
 ### Bug Fixes
