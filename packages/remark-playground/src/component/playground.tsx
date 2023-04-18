@@ -97,15 +97,19 @@ export const Playground = (props: Props) => {
         frameBorder={2}
       >
         <div
-          className={`flex justify-center ${
+          className={`block overflow-auto h-auto ${
             rule &&
             "inset-0 bg-grid-slate-700/10 mask-image:rgba(255,255,255,0.9) dark:bg-grid-slate-700/20 dark:mask-image:rgba(255,255,255,0.9)"
           }`}
         >
           <FullScreen handle={handle}>
             <LivePreview
-              className={`p-2 pr-6 overflow-auto h-auto dark:border-gray-700 `}
-              style={{ width: screen }}
+              className={`p-2 pr-6 dark:border-gray-700 `}
+              style={{
+                width: screen,
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
             />
           </FullScreen>
         </div>
