@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/jucian0/playground/compare/v0.1.2...v0.1.3) (2023-04-18)
+
+
+### Bug Fixes
+
+* fix padding in playground content ([1bb242f](https://github.com/jucian0/playground/commit/1bb242f4b630688d3260448b57de9babfae9e27a))
+
+
+
 ## [0.1.2](https://github.com/jucian0/playground/compare/v0.1.1...v0.1.2) (2023-04-18)
 
 
