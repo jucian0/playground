@@ -97,7 +97,7 @@ export const Playground = (props: Props) => {
         frameBorder={2}
       >
         <div
-          className={`block overflow-auto h-auto ${
+          className={`block overflow-auto h-auto p-5 ${
             rule &&
             "inset-0 bg-grid-slate-700/10 mask-image:rgba(255,255,255,0.9) dark:bg-grid-slate-700/20 dark:mask-image:rgba(255,255,255,0.9)"
           }`}
